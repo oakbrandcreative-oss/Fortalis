@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fortalis Projects — amenajări și construcții pentru restaurante, apartamente, vile și hoteluri.">
+    <title>Fortalis Projects — Interior Design</title>
+
+    <style>
+        :root{
+            --black:#1D151D;
+            --black-soft:#1D151D;
+            --cream:#f2e8d8;
+            --gold:#b98a55;
+            --gold-light:#d2ae7c;
+            --white:#fff;
+            --gray:#bdbdbd;
+            --max:1500px;
+            --radius:2px;
+        }
+
+        *{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{
+            font-family:Arial, Helvetica, sans-serif;
+            background:var(--black);
+            color:var(--white);
+            line-height:1.5;
+            overflow-x:hidden;
+        }
+        img{display:block;max-width:100%}
+        a{color:inherit;text-decoration:none}
+        button{font:inherit}
+
+        .container{
+            width:min(calc(100% - 48px), var(--max));
+            margin-inline:auto;
+        }
+
+        /* HEADER */
+        .topline{
+            background:#1D151D;
+            border-bottom:1px solid rgba(255,255,255,.08);
+            font-size:12px;
+            color:#fff;
+        }
+        .topline-inner{
+            min-height:34px;
+            display:flex;
+            align-items:center;
+            gap:20px;
+        }
+
+        .header{
+            background:#9A8D8D;
+            position:sticky;
+            top:0;
+            z-index:1000;
+            border-bottom:1px solid rgba(255,255,255,.08);
+        }
+        .header-inner{
+            min-height:88px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:30px;
+        }
+
+        .brand{
+            display:flex;
+            align-items:center;
+            gap:12px;
+            min-width:170px;
+        }
+        .brand img{
+            width:auto;
+            max-width:150px;
+            max-height:58px;
+            object-fit:contain;
+        }
+        .brand-fallback{
+            display:none;
+            font-weight:800;
+            line-height:.85;
+            font-size:24px;
+            text-transform:lowercase;
+        }
+
+        .nav{
+            display:flex;
+            align-items:center;
+            gap:28px;
+        }
+        .nav a{
+            font-size:14px;
+            font-weight:600;
+            color:#eee;
+            transition:color .2s ease;
+        }
+        .nav a:hover{color:var(--gold-light)}
+        .nav .cta{
+            color:#0A0009;
+            background:var(--gold-light);
+            padding:12px 18px;
+        }
+
+        .menu-toggle{
+            display:none;
+            border:1px solid rgba(255,255,255,.3);
+            background:transparent;
+            color:#fff;
+            width:44px;
+            height:44px;
+            cursor:pointer;
+        }
+
+        /* HERO */
+        .hero{
+            min-height:650px;
+            display:grid;
+            grid-template-columns:minmax(0, .95fr) minmax(0, 1.05fr);
+            background:#1D151D;
+        }
+        .hero-copy{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            padding:80px clamp(20px,5vw,90px);
+        }
+        .eyebrow{
+            font-family:Georgia, "Times New Roman", serif;
+            font-size:clamp(20px,2vw,34px);
+            margin-bottom:4px;
+        }
+        .hero h1{
+            font-family:Georgia, "Times New Roman", serif;
+            font-size:clamp(48px,6.8vw,108px);
+            line-height:.84;
+            letter-spacing:-.06em;
+            text-transform:uppercase;
+        }
+        .hero h1 .accent{
+            color:var(--gold);
+        }
+        .hero-subtitle{
+            max-width:600px;
+            margin-top:28px;
+            color:#d8d8d8;
+            font-size:17px;
+        }
+        .hero-actions{
+            display:flex;
+            flex-wrap:wrap;
+            gap:14px;
+            margin-top:34px;
+        }
+        .button{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            min-height:48px;
+            padding:0 24px;
+            border:1px solid var(--white);
+            text-transform:uppercase;
+            letter-spacing:.05em;
+            font-weight:700;
+            font-size:13px;
+        }
+        .button.primary{
+            background:var(--white);
+            color:#000;
+            border-color:var(--white);
+        }
+        .button.secondary:hover,
+        .button.primary:hover{
+            background:var(--gold-light);
+            color:#000;
+            border-color:var(--gold-light);
+        }
+
+        .hero-visual{
+            min-height:650px;
+            position:relative;
+            overflow:hidden;
+            background:
+                linear-gradient(135deg, rgba(25,25,25,.05), rgba(185,138,85,.18)),
+                radial-gradient(circle at 65% 30%, #e8e0d2 0 8%, transparent 9%),
+                linear-gradient(125deg,#252525 0 14%,#ddd6ca 14% 42%,#9f8d74 42% 45%,#e9e5dd 45% 78%,#5a4a38 78%);
+        }
+        .hero-visual::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:
+                linear-gradient(90deg,transparent 0 49%,rgba(0,0,0,.18) 49.2% 49.8%,transparent 50%),
+                linear-gradient(0deg,rgba(0,0,0,.15),transparent 35%);
+        }
+        .hero-visual::after{
+            content:"DESIGN • BUILD • INTERIOR";
+            position:absolute;
+            right:28px;
+            bottom:24px;
+            font-size:11px;
+            letter-spacing:.22em;
+            background:rgba(0,0,0,.62);
+            padding:10px 12px;
+        }
+
+        /* CITY BAR */
+        .city-bar{
+            background:var(--gold-light);
+            color:#111;
+            overflow:hidden;
+        }
+        .cities{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:26px;
+            min-height:42px;
+            white-space:nowrap;
+            overflow:auto;
+            scrollbar-width:none;
+            font-size:12px;
+            text-transform:uppercase;
+            font-weight:600;
+        }
+        .cities::-webkit-scrollbar{display:none}
+
+        /* SECTIONS */
+        section{padding:90px 0}
+        .section-heading{
+            display:flex;
+            justify-content:space-between;
+            align-items:end;
+            gap:30px;
+            margin-bottom:38px;
+        }
+        .section-heading h2{
+            font-family:Georgia, "Times New Roman", serif;
+            font-size:clamp(38px,5vw,72px);
+            line-height:.9;
+            text-transform:uppercase;
+            letter-spacing:-.05em;
+        }
+        .section-heading p{
+            max-width:480px;
+            color:#aaa;
+            font-size:15px;
+        }
+
+        .services-grid{
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:18px;
+        }
+        .service-card{
+            min-height:500px;
+            position:relative;
+            overflow:hidden;
+            background:#1a1a1a;
+            border:1px solid rgba(255,255,255,.08);
+            display:flex;
+            align-items:flex-end;
+        }
+        .service-image{
+            position:absolute;
+            inset:0;
+            transition:transform .45s ease;
+        }
+        .service-card:hover .service-image{transform:scale(1.04)}
+        .image-apartments{
+            background:
+                linear-gradient(180deg,transparent 35%,rgba(0,0,0,.8)),
+                repeating-linear-gradient(90deg,#b59a79 0 12px,#3e3329 12px 20px),
+                linear-gradient(135deg,#d9d1c5,#5b4637);
+        }
+        .image-villas{
+            background:
+                linear-gradient(180deg,transparent 30%,rgba(0,0,0,.78)),
+                linear-gradient(135deg,#d8d8d5 0 35%,#252525 35% 40%,#b7a590 40% 65%,#3c3028 65%);
+        }
+        .image-houses{
+            background:
+                linear-gradient(180deg,rgba(140,190,220,.7),transparent 45%,rgba(0,0,0,.8)),
+                linear-gradient(140deg,#eee 0 30%,#222 30% 36%,#d0d0ca 36% 65%,#8e5f35 65%);
+        }
+        .image-hotels{
+            background:
+                linear-gradient(180deg,rgba(255,255,255,.2),transparent 40%,rgba(0,0,0,.82)),
+                repeating-linear-gradient(90deg,#f0ece4 0 20px,#d4c7b5 20px 24px),
+                linear-gradient(135deg,#eee,#9b866d);
+        }
+        .service-content{
+            position:relative;
+            z-index:2;
+            padding:24px;
+            width:100%;
+        }
+        .service-content h3{
+            font-family:Georgia, "Times New Roman", serif;
+            font-size:clamp(28px,2.5vw,42px);
+            line-height:.95;
+            text-transform:uppercase;
+            margin-bottom:14px;
+        }
+        .service-content p{
+            color:#ddd;
+            font-size:14px;
+            max-width:320px;
+        }
+        .service-link{
+            display:inline-block;
+            margin-top:18px;
+            font-size:12px;
+            text-transform:uppercase;
+            font-weight:700;
+            border-bottom:1px solid var(--gold-light);
+            padding-bottom:4px;
+        }
+
+        /* ABOUT */
+        .about{
+            background:var(--cream);
+            color:#111;
+        }
+        .about-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:70px;
+            align-items:center;
+        }
+        .about h2{
+            font-family:Georgia, "Times New Roman", serif;
+            font-size:clamp(42px,6vw,82px);
+            line-height:.88;
+            text-transform:uppercase;
+            letter-spacing:-.06em;
+        }
+        .about p{
+            font-size:18px;
+            max-width:650px;
+            color:#3c3c3c;
+        }
+        .about .button{
+            border-color:#111;
+            color:#111;
+            margin-top:28px;
+        }
+
+        /* CONTACT */
+        .contact-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:50px;
+        }
+        .contact h2{
+            font-family:Georgia, "Times New Roman", serif;
+            font-size:clamp(42px,6vw,82px);
+            line-height:.88;
+            text-transform:uppercase;
+        }
+        .contact-details{
+            display:grid;
+            gap:22px;
+            align-content:start;
+        }
+        .contact-item{
+            border-top:1px solid rgba(255,255,255,.16);
+            padding-top:16px;
+        }
+        .contact-item small{
+            color:var(--gold-light);
+            text-transform:uppercase;
+            letter-spacing:.12em;
+            font-size:10px;
+        }
+        .contact-item strong{
+            display:block;
+            margin-top:5px;
+            font-size:18px;
+        }
+
+        footer{
+            border-top:1px solid rgba(255,255,255,.12);
+            padding:28px 0;
+            color:#888;
+            font-size:12px;
+        }
+        .footer-inner{
+            display:flex;
+            justify-content:space-between;
+            gap:20px;
+        }
+
+        /* MOBILE NAV */
+        @media (max-width: 900px){
+            .container{width:min(calc(100% - 32px),var(--max))}
+            .header-inner{min-height:74px}
+            .nav{
+                position:absolute;
+                left:0;
+                right:0;
+                top:100%;
+                background:#090909;
+                border-bottom:1px solid rgba(255,255,255,.1);
+                display:none;
+                flex-direction:column;
+                align-items:stretch;
+                gap:0;
+                padding:8px 16px 18px;
+            }
+            .nav.open{display:flex}
+            .nav a{padding:15px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
+            .nav .cta{text-align:center;margin-top:8px}
+            .menu-toggle{display:block}
+            .hero{
+                grid-template-columns:1fr;
+                min-height:auto;
+            }
+            .hero-copy{padding:70px 0 55px}
+            .hero-visual{min-height:420px}
+            .services-grid{grid-template-columns:repeat(2,1fr)}
+            .service-card{min-height:430px}
+            .about-grid,.contact-grid{grid-template-columns:1fr;gap:38px}
+        }
+
+        @media (max-width: 600px){
+            .topline-inner{
+                min-height:30px;
+                font-size:10px;
+                gap:12px;
+            }
+            .brand{min-width:auto}
+            .brand img{max-width:118px;max-height:46px}
+            .hero-copy{padding:58px 0 44px}
+            .eyebrow{font-size:20px}
+            .hero h1{font-size:clamp(48px,15vw,78px)}
+            .hero-subtitle{font-size:15px;margin-top:20px}
+            .hero-actions{margin-top:26px}
+            .button{width:100%}
+            .hero-visual{min-height:320px}
+            .cities{justify-content:flex-start;gap:18px;min-height:38px;font-size:10px}
+            section{padding:62px 0}
+            .section-heading{display:block;margin-bottom:28px}
+            .section-heading p{margin-top:18px}
+            .services-grid{grid-template-columns:1fr;gap:14px}
+            .service-card{min-height:410px}
+            .about-grid,.contact-grid{gap:28px}
+            .about p{font-size:16px}
+            .footer-inner{display:block}
+            .footer-inner span{display:block;margin-top:8px}
+        }
+
+        @media (prefers-reduced-motion: reduce){
+            html{scroll-behavior:auto}
+            *,*::before,*::after{transition:none!important}
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header class="header">
+        <div class="container header-inner">
+            <a class="brand" href="#home" aria-label="Fortalis Projects">
+                <img src="images/logo.png" style="width: 105vw; min-width: 300px;" alt="Fortalis Projects"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <span class="brand-fallback">design<br>masters</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-label="Deschide meniul"
+                    aria-expanded="false" aria-controls="main-nav">☰</button>
+
+            <nav class="nav" id="main-nav">
+                <a href="#home">Acasă</a>
+                <a href="#servicii">Servicii</a>
+                <a href="#despre">Despre noi</a>
+                <a href="#proiecte">Proiecte</a>
+                <a href="#contact">Contact</a>
+                <a class="cta" href="#contact">Solicită ofertă</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-copy">
+                <div class="eyebrow">AMENAJĂRI INTERIOARE</div>
+                <h1><span class="accent">PREMIUM DESIGN</span><br>CONCEPT &amp; EXECUTION</h1>
+                <p class="hero-subtitle">
+                    Proiectăm și realizăm spații premium pentru restaurante, case, vile,
+                    apartamente și hoteluri — de la concept până la execuție.
+                </p>
+                <div class="hero-actions">
+                    <a class="button primary" href="#contact">Solicită ofertă</a>
+                    <a class="button secondary" href="#servicii">Vezi serviciile</a>
+                </div>
+            </div>
+            <div class="hero-visual" aria-label="Imagine reprezentativă a unui interior premium"></div>
+        </section>
+
+        <div class="city-bar">
+            <div class="container cities" aria-label="Orașe">
+                <span>Arad</span><span>Bacău</span><span>Braila</span><span>Brașov</span>
+                <span>București</span><span>Buzău</span><span>Cluj</span><span>Constanța</span>
+                <span>Craiova</span><span>Galați</span><span>Iași</span><span>Oradea</span>
+                <span>Pitești</span><span>Ploiești</span><span>Sibiu</span><span>Suceava</span>
+            </div>
+        </div>
+
+        <section id="servicii">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Servicii</h2>
+                    <p>
+                        O singură echipă pentru design, coordonare și execuție.
+                        Fiecare proiect este adaptat spațiului și identității clientului.
+                    </p>
+                </div>
+
+                <div class="services-grid" id="proiecte">
+                    <article class="service-card">
+                        <div class="service-image image-apartments"></div>
+                        <div class="service-content">
+                            <h3>Amenajări<br>apartamente</h3>
+                            <p>Interioare contemporane, funcționale și personalizate.</p>
+                            <a class="service-link" href="#contact">Detalii →</a>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-image image-villas"></div>
+                        <div class="service-content">
+                            <h3>Amenajări<br>vile &amp; case</h3>
+                            <p>Concept complet pentru locuințe cu personalitate.</p>
+                            <a class="service-link" href="#contact">Detalii →</a>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-image image-houses"></div>
+                        <div class="service-content">
+                            <h3>Construcții<br>vile &amp; case</h3>
+                            <p>De la planificare și coordonare până la execuție.</p>
+                            <a class="service-link" href="#contact">Detalii →</a>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-image image-hotels"></div>
+                        <div class="service-content">
+                            <h3>Amenajări<br>hoteluri</h3>
+                            <p>Atmosfere premium pentru proiecte HoReCa și hospitality.</p>
+                            <a class="service-link" href="#contact">Detalii →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="despre">
+            <div class="container about-grid">
+                <div>
+                    <h2>Design<br>care<br>construiește.</h2>
+                </div>
+                <div>
+                    <p>
+                        Transformăm ideile în spații reale. Punem împreună designul,
+                        materialele, execuția și coordonarea într-un singur proces,
+                        pentru un rezultat coerent de la prima schiță până la ultimul detaliu.
+                    </p>
+                    <a class="button" href="#contact">Vorbește cu noi</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container contact-grid">
+                <div>
+                    <h2>Hai să<br>începem<br>proiectul.</h2>
+                </div>
+
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <small>Telefon</small>
+                        <strong><a href="tel:+40769041711">0769 041 711</a></strong>
+                    </div>
+                    <div class="contact-item">
+                        <small>Email</small>
+                        <strong><a href="mailto:info@fortalisprojects.ro">info@fortalisprojects.ro</a></strong>
+                    </div>
+                    <div class="contact-item">
+                        <small>Program</small>
+                        <strong>Luni – Vineri · 09:00 – 18:00</strong>
+                    </div>
+                    <a class="button primary" href="mailto:info@fortalisprojects.ro?subject=Solicitare%20oferta">
+                        Solicită ofertă
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <span>© Fortalis Projects. Toate drepturile rezervate.</span>
+            <span>Bucharest · România</span>
+        </div>
+    </footer>
+
+    <script>
+        const toggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('#main-nav');
+
+        toggle.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', String(isOpen));
+            toggle.textContent = isOpen ? '×' : '☰';
+        });
+
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.textContent = '☰';
+            });
+        });
+    </script>
+</body>
+</html>
