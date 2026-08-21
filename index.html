@@ -52,7 +52,7 @@
         }
 
         .header{
-            background:#9A8D8D;
+            background:#f2e8d8;
             position:sticky;
             top:0;
             z-index:1000;
@@ -94,7 +94,7 @@
         .nav a{
             font-size:14px;
             font-weight:600;
-            color:#eee;
+            color:#1D151D;
             transition:color .2s ease;
         }
         .nav a:hover{color:var(--gold-light)}
@@ -182,18 +182,15 @@
             min-height:650px;
             position:relative;
             overflow:hidden;
-            background:
-                linear-gradient(135deg, rgba(25,25,25,.05), rgba(185,138,85,.18)),
-                radial-gradient(circle at 65% 30%, #e8e0d2 0 8%, transparent 9%),
-                linear-gradient(125deg,#252525 0 14%,#ddd6ca 14% 42%,#9f8d74 42% 45%,#e9e5dd 45% 78%,#5a4a38 78%);
+            background:#1D151D;
         }
-        .hero-visual::before{
-            content:"";
+        .hero-visual img{
             position:absolute;
             inset:0;
-            background:
-                linear-gradient(90deg,transparent 0 49%,rgba(0,0,0,.18) 49.2% 49.8%,transparent 50%),
-                linear-gradient(0deg,rgba(0,0,0,.15),transparent 35%);
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            object-position:center;
         }
         .hero-visual::after{
             content:"DESIGN • BUILD • INTERIOR";
@@ -203,6 +200,7 @@
             font-size:11px;
             letter-spacing:.22em;
             background:rgba(0,0,0,.62);
+            z-index:2;
             padding:10px 12px;
         }
 
@@ -266,30 +264,20 @@
         .service-image{
             position:absolute;
             inset:0;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            object-position:center;
             transition:transform .45s ease;
         }
         .service-card:hover .service-image{transform:scale(1.04)}
-        .image-apartments{
-            background:
-                linear-gradient(180deg,transparent 35%,rgba(0,0,0,.8)),
-                repeating-linear-gradient(90deg,#b59a79 0 12px,#3e3329 12px 20px),
-                linear-gradient(135deg,#d9d1c5,#5b4637);
-        }
-        .image-villas{
-            background:
-                linear-gradient(180deg,transparent 30%,rgba(0,0,0,.78)),
-                linear-gradient(135deg,#d8d8d5 0 35%,#252525 35% 40%,#b7a590 40% 65%,#3c3028 65%);
-        }
-        .image-houses{
-            background:
-                linear-gradient(180deg,rgba(140,190,220,.7),transparent 45%,rgba(0,0,0,.8)),
-                linear-gradient(140deg,#eee 0 30%,#222 30% 36%,#d0d0ca 36% 65%,#8e5f35 65%);
-        }
-        .image-hotels{
-            background:
-                linear-gradient(180deg,rgba(255,255,255,.2),transparent 40%,rgba(0,0,0,.82)),
-                repeating-linear-gradient(90deg,#f0ece4 0 20px,#d4c7b5 20px 24px),
-                linear-gradient(135deg,#eee,#9b866d);
+        .service-card::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            z-index:1;
+            background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.85));
+            pointer-events:none;
         }
         .service-content{
             position:relative;
@@ -346,6 +334,62 @@
             border-color:#111;
             color:#111;
             margin-top:28px;
+        }
+
+        /* PARTNERS */
+        .partners-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+            gap:18px;
+        }
+        .partner-card{
+            background:#1a1a1a;
+            border:1px solid rgba(255,255,255,.08);
+            padding:0;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            text-align:center;
+            gap:0;
+            overflow:hidden;
+        }
+        .partner-logo{
+            width:100%;
+            aspect-ratio:16/9;
+            object-fit:cover;
+            object-position:center;
+        }
+        .partner-name{
+            font-family:Georgia, "Times New Roman", serif;
+            font-size:18px;
+            text-transform:uppercase;
+            letter-spacing:.02em;
+        }
+        .partner-socials{
+            display:flex;
+            gap:14px;
+            padding:20px 0 24px;
+        }
+        .partner-socials a{
+            width:38px;
+            height:38px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border:1px solid rgba(255,255,255,.25);
+            border-radius:50%;
+            color:#eee;
+            transition:border-color .2s ease, color .2s ease, background .2s ease;
+        }
+        .partner-socials a:hover{
+            border-color:var(--gold-light);
+            color:#0A0009;
+            background:var(--gold-light);
+        }
+        .partner-socials svg{
+            width:18px;
+            height:18px;
+            fill:currentColor;
         }
 
         /* CONTACT */
@@ -478,6 +522,7 @@
                 <a href="#servicii">Servicii</a>
                 <a href="#despre">Despre noi</a>
                 <a href="#proiecte">Proiecte</a>
+                <a href="#parteneri">Parteneri</a>
                 <a href="#contact">Contact</a>
                 <a class="cta" href="#contact">Solicită ofertă</a>
             </nav>
@@ -498,15 +543,14 @@
                     <a class="button secondary" href="#servicii">Vezi serviciile</a>
                 </div>
             </div>
-            <div class="hero-visual" aria-label="Imagine reprezentativă a unui interior premium"></div>
+            <div class="hero-visual">
+                <img src="images/hero.jpg" alt="Interior premium proiectat de Fortalis Projects">
+            </div>
         </section>
 
         <div class="city-bar">
             <div class="container cities" aria-label="Orașe">
-                <span>Arad</span><span>Bacău</span><span>Braila</span><span>Brașov</span>
-                <span>București</span><span>Buzău</span><span>Cluj</span><span>Constanța</span>
-                <span>Craiova</span><span>Galați</span><span>Iași</span><span>Oradea</span>
-                <span>Pitești</span><span>Ploiești</span><span>Sibiu</span><span>Suceava</span>
+                
             </div>
         </div>
 
@@ -515,14 +559,14 @@
                 <div class="section-heading">
                     <h2>Servicii</h2>
                     <p>
-                        O singură echipă pentru design, coordonare și execuție.
+                        O singură echipă pentru design, coordonare și execuție.<br>
                         Fiecare proiect este adaptat spațiului și identității clientului.
                     </p>
                 </div>
 
                 <div class="services-grid" id="proiecte">
                     <article class="service-card">
-                        <div class="service-image image-apartments"></div>
+                        <img class="service-image" src="images/apartments.jpg" alt="Amenajări apartamente">
                         <div class="service-content">
                             <h3>Amenajări<br>apartamente</h3>
                             <p>Interioare contemporane, funcționale și personalizate.</p>
@@ -531,7 +575,7 @@
                     </article>
 
                     <article class="service-card">
-                        <div class="service-image image-villas"></div>
+                        <img class="service-image" src="images/villas.jpg" alt="Amenajări vile și case">
                         <div class="service-content">
                             <h3>Amenajări<br>vile &amp; case</h3>
                             <p>Concept complet pentru locuințe cu personalitate.</p>
@@ -540,7 +584,7 @@
                     </article>
 
                     <article class="service-card">
-                        <div class="service-image image-houses"></div>
+                        <img class="service-image" src="images/houses.jpg" alt="Construcții vile și case">
                         <div class="service-content">
                             <h3>Construcții<br>vile &amp; case</h3>
                             <p>De la planificare și coordonare până la execuție.</p>
@@ -549,7 +593,7 @@
                     </article>
 
                     <article class="service-card">
-                        <div class="service-image image-hotels"></div>
+                        <img class="service-image" src="images/hotels.jpg" alt="Amenajări hoteluri">
                         <div class="service-content">
                             <h3>Amenajări<br>hoteluri</h3>
                             <p>Atmosfere premium pentru proiecte HoReCa și hospitality.</p>
@@ -572,6 +616,36 @@
                         pentru un rezultat coerent de la prima schiță până la ultimul detaliu.
                     </p>
                     <a class="button" href="#contact">Vorbește cu noi</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="parteneri">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Parteneri</h2>
+                    <p>
+                        Colaborăm cu branduri de încredere pentru a livra
+                        proiecte la cel mai înalt standard.
+                    </p>
+                </div>
+
+                <div class="partners-grid">
+                    <div class="partner-card">
+                        <img class="partner-logo" src="images/partner-01.jpg" alt="Logo partener">
+                        <div class="partner-socials">
+                            <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.89 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43-.26.66-.6 1.22-1.15 1.77-.55.55-1.11.89-1.77 1.15-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47-.66-.26-1.22-.6-1.77-1.15-.55-.55-.89-1.11-1.15-1.77-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77.55-.55 1.11-.89 1.77-1.15.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 1.8c-2.67 0-2.99.01-4.04.06-.86.04-1.33.18-1.64.3-.41.16-.71.35-1.02.66-.31.31-.5.61-.66 1.02-.12.31-.26.78-.3 1.64-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.86.18 1.33.3 1.64.16.41.35.71.66 1.02.31.31.61.5 1.02.66.31.12.78.26 1.64.3 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.86-.04 1.33-.18 1.64-.3.41-.16.71-.35 1.02-.66.31-.31.5-.61.66-1.02.12-.31.26-.78.3-1.64.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.86-.18-1.33-.3-1.64-.16-.41-.35-.71-.66-1.02-.31-.31-.61-.5-1.02-.66-.31-.12-.78-.26-1.64-.3-1.05-.05-1.37-.06-4.04-.06zm0 3.06a5.14 5.14 0 1 1 0 10.28 5.14 5.14 0 0 1 0-10.28zm0 1.8a3.34 3.34 0 1 0 0 6.68 3.34 3.34 0 0 0 0-6.68zm5.34-1.99a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/>
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M13.5 22v-8.5h2.85l.43-3.31H13.5V8.06c0-.96.27-1.61 1.65-1.61h1.76V3.5c-.3-.04-1.35-.13-2.57-.13-2.54 0-4.28 1.55-4.28 4.4v2.46H7.2v3.31h2.86V22h3.44z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
