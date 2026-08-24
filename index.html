@@ -193,7 +193,7 @@
             object-position:center;
         }
         .hero-visual::after{
-            content:"DESIGN • BUILD • INTERIOR";
+            content:"DESIGN • BUILD • LEGACY";
             position:absolute;
             right:28px;
             bottom:24px;
@@ -337,38 +337,59 @@
         }
 
         /* PARTNERS */
-        .partners-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
-            gap:18px;
-        }
-        .partner-card{
-            background:#1a1a1a;
-            border:1px solid rgba(255,255,255,.08);
-            padding:0;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
+        .partners-heading{
             text-align:center;
-            gap:0;
+            max-width:640px;
+            margin:0 auto 50px;
+        }
+        .partners-heading h2{
+            font-family:Georgia, "Times New Roman", serif;
+            font-size:clamp(38px,5vw,72px);
+            line-height:.9;
+            text-transform:uppercase;
+            letter-spacing:-.05em;
+        }
+        .partners-heading p{
+            margin-top:18px;
+            color:#aaa;
+            font-size:15px;
+        }
+        .partner-showcase{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:60px;
+            align-items:center;
+            max-width:940px;
+            margin:0 auto;
+        }
+        .partner-logo-wrap{
+            border:1px solid rgba(255,255,255,.08);
             overflow:hidden;
         }
         .partner-logo{
+            display:block;
             width:100%;
-            aspect-ratio:16/9;
+            aspect-ratio:4/3;
             object-fit:cover;
             object-position:center;
         }
+        .partner-info p{
+            color:#ccc;
+            font-size:16px;
+            line-height:1.7;
+        }
         .partner-name{
+            display:block;
             font-family:Georgia, "Times New Roman", serif;
-            font-size:18px;
+            font-size:22px;
             text-transform:uppercase;
             letter-spacing:.02em;
+            margin-bottom:14px;
         }
         .partner-socials{
             display:flex;
             gap:14px;
-            padding:20px 0 24px;
+            margin-top:24px;
         }
         .partner-socials a{
             width:38px;
@@ -390,6 +411,10 @@
             width:18px;
             height:18px;
             fill:currentColor;
+        }
+        @media (max-width:720px){
+            .partner-showcase{grid-template-columns:1fr;gap:32px;text-align:center}
+            .partner-socials{justify-content:center}
         }
 
         /* CONTACT */
@@ -522,7 +547,7 @@
                 <a href="#servicii">Servicii</a>
                 <a href="#despre">Despre noi</a>
                 <a href="#proiecte">Proiecte</a>
-                <a href="#parteneri">Parteneri</a>
+                <a href="#partener">Partener</a>
                 <a href="#contact">Contact</a>
                 <a class="cta" href="#contact">Solicită ofertă</a>
             </nav>
@@ -620,19 +645,32 @@
             </div>
         </section>
 
-        <section id="parteneri">
+        <section id="partener">
             <div class="container">
-                <div class="section-heading">
-                    <h2>Parteneri</h2>
+                <div class="partners-heading">
+                    <h2>Partener</h2>
                     <p>
                         Colaborăm cu branduri de încredere pentru a livra
                         proiecte la cel mai înalt standard.
                     </p>
                 </div>
 
-                <div class="partners-grid">
-                    <div class="partner-card">
+                <div class="partner-showcase">
+                    <div class="partner-logo-wrap">
                         <img class="partner-logo" src="images/partner-01.jpg" alt="Logo partener">
+                    </div>
+                    <div class="partner-info">
+                        <span class="partner-name">Color Smart</span>
+                        <p>
+                            Parteneriatul cu Color Smart ne permite să oferim
+                            clienților noștri acces la produse și soluții de
+                            înaltă calitate pentru fiecare proiect. Această
+                            colaborare consolidează standardul de execuție pe
+                            care Fortalis Projects îl promovează, aducând
+                            împreună expertiza tehnică și atenția la detalii
+                            care fac diferența într-un proiect finalizat cu
+                            succes.
+                        </p>
                         <div class="partner-socials">
                             <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
                                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -657,19 +695,16 @@
                 </div>
 
                 <div class="contact-details">
-                    <div class="contact-item">
-                        <small>Telefon</small>
-                        <strong><a href="tel:+40769041711">0769 041 711</a></strong>
-                    </div>
+                  
                     <div class="contact-item">
                         <small>Email</small>
-                        <strong><a href="mailto:info@fortalisprojects.ro">info@fortalisprojects.ro</a></strong>
+                        <strong><a href="mailto:contact@fortalisprojects.ro">contact@fortalisprojects.ro</a></strong>
                     </div>
                     <div class="contact-item">
                         <small>Program</small>
                         <strong>Luni – Vineri · 09:00 – 18:00</strong>
                     </div>
-                    <a class="button primary" href="mailto:info@fortalisprojects.ro?subject=Solicitare%20oferta">
+                    <a class="button primary" href="mailto:contact@fortalisprojects.ro?subject=Solicitare%20oferta">
                         Solicită ofertă
                     </a>
                 </div>
