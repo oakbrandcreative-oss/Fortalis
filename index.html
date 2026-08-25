@@ -386,6 +386,37 @@
             letter-spacing:.02em;
             margin-bottom:14px;
         }
+        .partner-links{
+            display:flex;
+            flex-direction:column;
+            gap:8px;
+            margin-top:22px;
+        }
+        .partner-links a{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            width:fit-content;
+            color:var(--gold-light);
+            font-size:14px;
+            letter-spacing:.02em;
+            border-bottom:1px solid transparent;
+            transition:border-color .2s ease, color .2s ease;
+        }
+        .partner-links a:hover{
+            border-color:var(--gold-light);
+        }
+        .partner-links a svg{
+            width:13px;
+            height:13px;
+            flex-shrink:0;
+            fill:none;
+            stroke:currentColor;
+            stroke-width:2;
+        }
+        @media (max-width:720px){
+            .partner-links{align-items:center}
+        }
         .partner-socials{
             display:flex;
             gap:14px;
@@ -661,6 +692,16 @@
                     </div>
                     <div class="partner-info">
                         <span class="partner-name">Color Smart</span>
+                        <div class="partner-links">
+                            <a href="https://colorsmart.ro/" target="_blank" rel="noopener">
+                                Află mai multe despre Color Smart
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                            </a>
+                            <a href="https://colorsmartpaints.ro/" target="_blank" rel="noopener">
+                                Vopseluri Color Smart
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                            </a>
+                        </div>
                         <p>
                             Parteneriatul cu Color Smart ne permite să oferim
                             clienților noștri acces la produse și soluții de
